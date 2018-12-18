@@ -9,10 +9,15 @@
 import UIKit
 
 class contentsCollectionViewCell: UICollectionViewCell {
-
+    @IBOutlet weak var thumnailImage: UIImageView!
+    
+    @IBOutlet weak var presenterIdonImage: UIImageView!
+    @IBOutlet weak var movieTitleLabel: UILabel!
+    @IBOutlet weak var movieDescriptionLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.movieDescriptionLabel.translatesAutoresizingMaskIntoConstraints = false
     }
 
 }

@@ -13,11 +13,6 @@ class MainViewController: UIViewController,UICollectionViewDelegate, UICollectio
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        return 1
-//    }
-//
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
@@ -25,19 +20,22 @@ class MainViewController: UIViewController,UICollectionViewDelegate, UICollectio
         
         collectionView.register(UINib(nibName: "contentsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "contentsCollectionViewCell")
         // Do any additional setup after loading the view.
+        let titleLabel = UILabel(frame: CGRect(x:0,y:0,width:self.view.frame.width - 32,height:view.frame.height))
+        titleLabel.text = "Home"
+        titleLabel.textColor = UIColor.white
+        titleLabel.font = UIFont.systemFont(ofSize: 20)
+        self.navigationItem.titleView = titleLabel
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell : contentsCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "contentsCollectionViewCell", for: indexPath as IndexPath) as! contentsCollectionViewCell
-        
-//        let imageName:String = "image00" + String(indexPath.row) + ".png"
-//
-//        cell.cellImage.image = UIImage(named: imageName)
-//        //
-//        cell.cellName.text = strArray[indexPath.row]
-//
-//        cell.cellDetailText.text = "世界最大級のティラノサウルス（13m）や、\n3本角のトリケラトプス（9m）が登場！"
+        cell.thumnailImage.image = UIImage (named: "test.jpeg")
+        cell.presenterIdonImage.image = UIImage(named: "icon.jpeg")
+        cell.presenterIdonImage.clipsToBounds = true
+        cell.presenterIdonImage.layer.cornerRadius = cell.presenterIdonImage.frame.height / 2.0
+        cell.movieTitleLabel.text = "ヴァイオレット・エヴァーガーデンop「Sincerely」Full歌詞付き"
+        cell.movieDescriptionLabel.text = "アニメ「ヴァイオレット・エヴァーガーデン」OP主題歌\n「Sincerely」/TRU"
         
         return cell
     }
